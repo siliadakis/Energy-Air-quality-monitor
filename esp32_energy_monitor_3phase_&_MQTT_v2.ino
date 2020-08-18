@@ -51,7 +51,6 @@ EnergyMonitor emon3;                   // Create an instance
 // Wiring: SDA pin is connected to A4 and SCL pin to A5.
 // Connect to LCD via I2C, default address 0x27 (A0-A2 not jumpered)
 LiquidCrystal_I2C lcd = LiquidCrystal_I2C(0x27, 16, 2);    // Change to (0x27,16,2) for 16x2 LCD.
-//#include <math.h>
 
 void setup() {
   analogReadResolution(10);
@@ -108,10 +107,10 @@ void setup_wifi() {
 
 // This functions is executed when some device publishes a message to a topic that your ESP8266/ESP32 is subscribed to
 // Change the function below to add logic to your program, so when a device publishes a message to a topic that 
-// your ESP8266/ESP32  is subscribed you can actually do something
+// your ESP8266/ESP32  is subscribed you can actually do something.
 // Η συνάρτηση callback εκτελείται όταν κάποια συσκευή δημοσιεύει ένα μήνυμα σε ένα θέμα στο οποίο έχει εγγραφεί το ESP8266/ESP32 
 // Αλλάξτε τη λειτουργία παρακάτω για να προσθέσετε λογική στο πρόγραμμα σας, έτσι όταν μια συσκευή δημοσιεύει ένα μήνυμα σε ένα θέμα που
-// το ESP8266/ESP32  σας έχει εγγραφεί, μπορείτε πραγματικά να κάνετε κάτι
+// το ESP8266/ESP32  σας έχει εγγραφεί, μπορείτε πραγματικά να κάνετε κάτι.
 
 void callback(String topic, byte* message, unsigned int length) {
   Serial.print("Message arrived on topic: ");
@@ -167,17 +166,18 @@ void reconnect() {
       That should solve your MQTT multiple connections problem
     */
     /*
-    // Προσπάθεια σύνδεσης
-    //  ΜΠΟΡΕΙΤΕ ΝΑ ΧΡΗΣΙΜΟΠΟΙΗΣΕΤΕ ΤΗΝ ΑΚΟΛΟΥΘΗ ΓΡΑΜΜΗ, ΕΑΝ ΕΧΕΤΕ ΠΡΟΒΛΗΜΑΤΑ ΜΕ ΠΟΛΛΑΠΛΕΣ ΣΥΝΔΕΣΕΙΣ MQTT
-    //  Για να αλλάξετε το αναγνωριστικό συσκευής ESP, θα πρέπει να δώσετε ένα νέο όνομα στο ESP8266.
-    //  Δείτε πώς φαίνεται:
-    //  εάν (client.connect ("ESP8266Client")) {
-    //  Μπορείτε να το κάνετε όπως παρακάτω:
-    //  αν (client.connect ("ESP1_Office")) {
-    //  Στη συνέχεια, για το άλλο ESP:
-    //  εάν (client.connect ("ESP2_Garage")) {
-    //  Αυτό θα λύσει το πρόβλημα πολλαπλών συνδέσεων MQTT
+    Προσπάθεια σύνδεσης
+    ΜΠΟΡΕΙΤΕ ΝΑ ΧΡΗΣΙΜΟΠΟΙΗΣΕΤΕ ΤΗΝ ΑΚΟΛΟΥΘΗ ΓΡΑΜΜΗ, ΕΑΝ ΕΧΕΤΕ ΠΡΟΒΛΗΜΑΤΑ ΜΕ ΠΟΛΛΑΠΛΕΣ ΣΥΝΔΕΣΕΙΣ MQTT
+    Για να αλλάξετε το αναγνωριστικό συσκευής ESP, θα πρέπει να δώσετε ένα νέο όνομα στο ESP8266.
+    Δείτε πώς φαίνεται:
+    if (client.connect ("ESP8266Client")) {
+    Μπορείτε να το κάνετε όπως παρακάτω:
+    if (client.connect ("ESP1_Office")) {
+    Στη συνέχεια, για το άλλο ESP:
+    if (client.connect ("ESP2_Garage")) {
+    Αυτό θα λύσει το πρόβλημα πολλαπλών συνδέσεων MQTT
     */
+    
     if (client.connect("Line X Client")) {
       Serial.println("connected");  
       // Subscribe or resubscribe to a topic
@@ -259,25 +259,25 @@ void monitor_function(){
 
   // Print 'Hello World!' on the first line of the LCD:
   lcd.setCursor(0, 0); // Set the cursor on the first column and first row.
-  lcd.print("I "); // Print the string "Hello World!"
-  lcd.setCursor(2, 0); // Set the cursor on the first column and first row.
+  lcd.print("I "); // Print the string "I "
+  lcd.setCursor(2, 0); // Set the cursor on the third column and first row.
   lcd.print(Irms1, 1);
   lcd.print(" ");
-  lcd.setCursor(7, 0); // Set the cursor on the first column and first row.
+  lcd.setCursor(7, 0); // Set the cursor on the eighth column and first row.
   lcd.print(Irms2, 1);
   lcd.print(" ");
-  lcd.setCursor(12, 0); // Set the cursor on the first column and first row.
+  lcd.setCursor(12, 0); // Set the cursor on the twelfth column and first row.
   lcd.print(Irms3, 1);
   lcd.print(" ");
-  lcd.setCursor(0, 1); //Set the cursor on the third column and the second row (counting starts at 0!).
+  lcd.setCursor(0, 1); //Set the cursor on the first column and the second row (counting starts at 0!).
   lcd.print("P ");
   lcd.setCursor(2, 1); //Set the cursor on the third column and the second row (counting starts at 0!).
   lcd.print(x);
   lcd.print(" ");
-  lcd.setCursor(7, 1); //Set the cursor on the third column and the second row (counting starts at 0!).
+  lcd.setCursor(7, 1); //Set the cursor on the eighth column and the second row (counting starts at 0!).
   lcd.print(y);
   lcd.print(" ");
-  lcd.setCursor(12, 1); //Set the cursor on the third column and the second row (counting starts at 0!).
+  lcd.setCursor(12, 1); //Set the cursor on the twelfth column and the second row (counting starts at 0!).
   lcd.print(z);
   lcd.print(" ");
   
